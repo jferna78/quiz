@@ -2,13 +2,12 @@ body {
     background: #999;
 }
 
-#page-wrap:after {
-    content: "Wide Layaout";
+.sha {
+    background: #999;
 }
 
 nav {
     float: left;
-    height: 200px;
     width: 15%;
 }
 
@@ -18,11 +17,14 @@ nav span {
 
 section {
     float: right;
-    height: 200px;
     width: 80%;
 }
 
 footer {
     clear: both;
     display: block;
+}
+
+#page-wrap:after {
+    content: "Wide Layaout";
 }
