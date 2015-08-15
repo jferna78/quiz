@@ -20,4 +20,6 @@ router.get('/author', function(req, res, next) {
   res.render('author', { title: 'Quiz' });
 });
 
+router.get('/quizes/search',                      quizController.search);
+
 module.exports = router;

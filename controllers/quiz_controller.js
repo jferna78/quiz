@@ -34,3 +34,19 @@ exports.answer = function(req, res) {
   }
   res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado});
 };
+
+// GET /quizes/busquedas
+exports.search = function(req, res) {
+	var search = "%";
+	if(req.query.search !== undefined) {
+		search = "%" + req.query.search + "%";
+		search = search.trim().replace(/\s/g,"%");	
+	} 
+	models.Quiz.findAll(
+		{where:["upper(pregunta) like ?", search.toUpperCase()], order: 'pregunta ASC'}
+	).then(
+		function(quizes) {
+			res.render('quizes/search', { quizes: quizes, errors: []});
+		}
+	).catch(function(error) { next(error);});
+};
