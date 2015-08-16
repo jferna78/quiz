@@ -1,16 +1,10 @@
-body {
-    background: #333;
-    font-size: xx-large;
-}
 
-#page-wrap:after {
-    content: "Smartphone Layout";
-}
+body             { background: #333; }
 
-h2 span, section h3 {
-    display: none;
-}
+#page-wrap:after { content: "Smartphone Layout"; }
 
-footer, input {
-    font-size: large;
-}
+h2 span, section h3, label.rem 
+                 { display: none; }
+body             { font-size: xx-large; }
+input, button    { font-size: x-large; }
+footer           { font-size: large; }
