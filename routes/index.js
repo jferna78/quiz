@@ -4,6 +4,7 @@ var router = express.Router();
 var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
+var estadisticasController = require('../controllers/estadisticas_controller');
 
 // Página de entrada (home page)
 router.get('/', function(req, res) {
@@ -40,5 +41,7 @@ router.get('/author', function(req, res, next) {
 });
 
 router.get('/quizes/search',                      quizController.search);
+
+router.get('/estadisticas',			estadisticasController.calculate, estadisticasController.show);
 
 module.exports = router;

@@ -37,3 +37,7 @@ nav span {
 .central {
     min-height: 143px;
 }
+
+table {
+margin: auto;
+}

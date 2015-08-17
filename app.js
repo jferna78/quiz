@@ -28,6 +28,24 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// MW de autologout
+app.use(function(req, res, next) {
+		if (req.session.user) {
+		var elapsedtime = Date.now() - req.session.tiempo_inicio;
+		if (elapsedtime > 120000) { 
+			delete req.session.user;
+			delete req.session.tiempo_inicio;
+			req.session.errors = [{
+				"message": "Su sesión ha estado inactiva más de 2 minutos, debe de volver a autenticarse para continuar."
+			}];
+            return res.redirect(303, '/login');
+		} else {
+			req.session.tiempo_inicio = Date.now();
+		}
+	}
+	next();
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
